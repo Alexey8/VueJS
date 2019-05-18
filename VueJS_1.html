@@ -18,8 +18,16 @@
 	<!-- Шаблонизатор -->
 	<h1>functions: {{string.split('').reverse().join('')}}</h1>
 	<h2>
-		<a v-bind:href="url">{{url}}</a>
+		<a :href="url">Google</a>
 	</h2>
+
+	<h2>
+		Counter: {{counter}}
+	</h2>
+
+	<button @click="counter++">Rise</button>
+	<!-- v-on == @
+		 v-bind == :-->
 
 	<h2	v-html="link"></h2>
 
@@ -40,6 +48,16 @@
 		X: {{ x }} \ Y: {{ y }}
 		<span v-on:mousemove.stop="">Не изменять</span>
 	</h2>
+
+	<hr>
+
+	<input type="text" v-on:keyup.enter.space="alertValue">
+
+	<!-- 2 way binding -->
+	<!--<input type="text" @input="inputValue = $event.target.value">-->
+	<input type="text" v-model.lazy="inputValue">
+	<h2>{{inputValue}}</h2>
+
 </div>
 
 	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
@@ -58,7 +76,8 @@
 				counter2: 0,
 				title:'Счетчик',
 				x: 0,
-				y: 0
+				y: 0,
+				inputValue: 'initial value'
 			},
 			methods: {
 				sayHello: function() {
@@ -82,6 +101,12 @@
 				handleMouseMove: function(event) {
 					this.x = event.clientX
 					this.y = event.clientY
+				},
+				alertValue: function(event) {
+					/*if(event.keyCode === 13) {
+						alert(event.target.value)	
+					}*/
+					alert(event.target.value)	
 				}
 			}
 		})
