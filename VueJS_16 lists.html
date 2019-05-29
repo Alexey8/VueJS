@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html language = "en">
+<head>
+	<meta charset = "UTF-8">
+	<title>Vue JS</title>
+</head>
+<body>
+
+<div id = "app">
+
+	<ul>
+		<li v-for="(person, index) in people">{{index + 1}} {{person.name}} - <b>{{person.age}}</b></li>	
+	</ul>
+
+	<ol>
+		<li v-for="num of 10">{{ num }}</li>
+	</ol>
+
+	<ul>
+		<li v-for="(value, key, index) in person"><em>{{ index+1 }}</em> <b>{{ key }}</b>{{ value }}</li>
+	</ul>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script type="text/javascript">	
+
+		new Vue({
+			el: '#app',
+			data: {
+				people: [
+					{name:'Vlad', age: 20},
+					{name:'Max', age: 25},
+					{name:'Elena', age: 30}
+				],
+				person: {
+					name: 'Alex',
+					age:30,
+					job:'frontend'
+				}
+			}
+		})
+	</script>
+</body>
+</html>
